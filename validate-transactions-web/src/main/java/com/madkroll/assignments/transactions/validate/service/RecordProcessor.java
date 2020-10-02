@@ -8,7 +8,6 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Iterator;
 import java.util.List;
 
 @Log4j2
@@ -16,7 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 public class RecordProcessor {
 
-    private final SortRecords sortRecords;
     private final RecordValidatorFactory recordValidatorFactory;
 
     public ValidationReport process(final List<Record> records) {
@@ -25,7 +23,6 @@ public class RecordProcessor {
             return new ValidationReport(ImmutableList.of());
         }
 
-        final Iterator<Record> sortedByReference = sortRecords.byReference(records);
-        return recordValidatorFactory.recordValidator().validate(sortedByReference);
+        return recordValidatorFactory.recordValidator().validate(records);
     }
 }

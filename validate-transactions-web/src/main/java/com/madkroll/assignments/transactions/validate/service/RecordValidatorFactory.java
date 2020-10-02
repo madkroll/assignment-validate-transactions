@@ -11,11 +11,13 @@ import java.util.function.Predicate;
 @AllArgsConstructor
 public class RecordValidatorFactory {
 
+    private final SortRecords sortRecords;
     private final Predicate<Record> hasIncorrectEndBalance;
     private final BiPredicate<Record, Record> hasSameReferenceAsPrevious;
 
     public RecordValidator recordValidator() {
         return new RecordValidator(
+                sortRecords,
                 hasSameReferenceAsPrevious,
                 hasIncorrectEndBalance
         );

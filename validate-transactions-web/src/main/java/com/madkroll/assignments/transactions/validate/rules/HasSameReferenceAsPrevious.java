@@ -10,6 +10,6 @@ public class HasSameReferenceAsPrevious implements BiPredicate<Record, Record> {
 
     @Override
     public boolean test(final Record previousRecord, final Record nextRecord) {
-        return previousRecord != null && previousRecord.getReference().equals(nextRecord.getReference());
+        return previousRecord != null && previousRecord.getReference().equalsIgnoreCase(nextRecord.getReference());
     }
 }

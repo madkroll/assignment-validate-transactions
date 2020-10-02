@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 
 import javax.annotation.concurrent.NotThreadSafe;
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 
@@ -19,10 +20,13 @@ public class RecordValidator {
 
     private final ListMultimap<String, InvalidRecord> invalidRecords = ArrayListMultimap.create();
 
+    private final SortRecords sortRecords;
     private final BiPredicate<Record, Record> hasSameReferenceAsPrevious;
     private final Predicate<Record> hasIncorrectEndBalance;
 
-    public ValidationReport validate(final Iterator<Record> recordsSortedByReference) {
+    public ValidationReport validate(final List<Record> records) {
+        final Iterator<Record> recordsSortedByReference = sortRecords.byReference(records);
+
         Record previousRecord = null;
         while (recordsSortedByReference.hasNext()) {
             final Record nextRecord = recordsSortedByReference.next();
