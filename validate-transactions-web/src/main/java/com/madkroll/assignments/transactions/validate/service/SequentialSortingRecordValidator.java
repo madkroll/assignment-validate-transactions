@@ -16,7 +16,7 @@ import java.util.function.Predicate;
 
 @NotThreadSafe
 @AllArgsConstructor
-public class RecordValidator {
+public class SequentialSortingRecordValidator {
 
     private final ListMultimap<String, InvalidRecord> invalidRecords = ArrayListMultimap.create();
 

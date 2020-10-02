@@ -30,11 +30,11 @@ public class RecordProcessorTest {
     private RecordValidatorFactory recordValidatorFactory;
 
     @Mock
-    private RecordValidator recordValidator;
+    private SequentialSortingRecordValidator sequentialSortingRecordValidator;
 
     @Before
     public void setUp() {
-        given(recordValidatorFactory.recordValidator()).willReturn(recordValidator);
+        given(recordValidatorFactory.recordValidator()).willReturn(sequentialSortingRecordValidator);
     }
 
     @Test
@@ -45,12 +45,12 @@ public class RecordProcessorTest {
                         .getInvalidRecords()
         ).isEmpty();
 
-        verifyNoInteractions(recordValidatorFactory, recordValidator);
+        verifyNoInteractions(recordValidatorFactory, sequentialSortingRecordValidator);
     }
 
     @Test
     public void shouldReturnReportWithFoundInvalidRecords() {
-        given(recordValidator.validate(INPUT_RECORDS_NON_EMPTY))
+        given(sequentialSortingRecordValidator.validate(INPUT_RECORDS_NON_EMPTY))
                 .willReturn(new ValidationReport(INVALID_RECORDS_NON_EMPTY));
 
         assertThat(
@@ -60,12 +60,12 @@ public class RecordProcessorTest {
         ).containsExactlyInAnyOrderElementsOf(INVALID_RECORDS_NON_EMPTY);
 
         verify(recordValidatorFactory).recordValidator();
-        verify(recordValidator).validate(INPUT_RECORDS_NON_EMPTY);
+        verify(sequentialSortingRecordValidator).validate(INPUT_RECORDS_NON_EMPTY);
     }
 
     @Test
     public void shouldReturnEmptyReportWhenNoInvalidRecordsFound() {
-        given(recordValidator.validate(INPUT_RECORDS_NON_EMPTY))
+        given(sequentialSortingRecordValidator.validate(INPUT_RECORDS_NON_EMPTY))
                 .willReturn(new ValidationReport(INVALID_RECORDS_EMPTY));
 
         assertThat(
@@ -75,7 +75,7 @@ public class RecordProcessorTest {
         ).isEmpty();
 
         verify(recordValidatorFactory).recordValidator();
-        verify(recordValidator).validate(INPUT_RECORDS_NON_EMPTY);
+        verify(sequentialSortingRecordValidator).validate(INPUT_RECORDS_NON_EMPTY);
     }
 
     private static Record newRecord(final String description) {

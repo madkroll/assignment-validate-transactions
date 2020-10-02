@@ -15,8 +15,8 @@ public class RecordValidatorFactory {
     private final Predicate<Record> hasIncorrectEndBalance;
     private final BiPredicate<Record, Record> hasSameReferenceAsPrevious;
 
-    public RecordValidator recordValidator() {
-        return new RecordValidator(
+    public SequentialSortingRecordValidator recordValidator() {
+        return new SequentialSortingRecordValidator(
                 sortRecords,
                 hasSameReferenceAsPrevious,
                 hasIncorrectEndBalance

@@ -10,7 +10,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RecordValidatorFactoryTest {
+public class SequentialSortingRecordValidatorFactoryTest {
 
     @Mock
     private SortRecords sortRecords;
