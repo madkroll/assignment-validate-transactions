@@ -22,11 +22,11 @@ import static org.mockito.BDDMockito.given;
 public class SequentialSortingRecordValidatorTest {
 
     private static final List<Record> ANY_INPUT_RECORDS = ImmutableList.of();
-    private static final Record RECORD_VALID = newRecord("valid-record", "valid-record");
-    private static final Record RECORD_WRONG_END_BALANCE_FIRST = newRecord("wrong-balance", "wrong-balance-first");
-    private static final Record RECORD_WRONG_END_BALANCE_SECOND = newRecord("wrong-balance", "wrong-balance-second");
-    private static final Record RECORD_SAME_REFERENCE_FIRST = newRecord("same-reference", "same-reference-first");
-    private static final Record RECORD_SAME_REFERENCE_SECOND = newRecord("same-reference", "same-reference-second");
+    private static final Record RECORD_VALID = newRecord(1, "valid-record");
+    private static final Record RECORD_WRONG_END_BALANCE_FIRST = newRecord(2, "wrong-balance-first");
+    private static final Record RECORD_WRONG_END_BALANCE_SECOND = newRecord(2, "wrong-balance-second");
+    private static final Record RECORD_SAME_REFERENCE_FIRST = newRecord(3, "same-reference-first");
+    private static final Record RECORD_SAME_REFERENCE_SECOND = newRecord(3, "same-reference-second");
 
     @Mock
     private SortRecords sortRecords;
@@ -111,7 +111,7 @@ public class SequentialSortingRecordValidatorTest {
         assertThat(report.getInvalidRecords()).isEmpty();
     }
 
-    private static Record newRecord(final String reference, final String description) {
+    private static Record newRecord(final long reference, final String description) {
         return new Record(reference, "", description, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
     }
 }

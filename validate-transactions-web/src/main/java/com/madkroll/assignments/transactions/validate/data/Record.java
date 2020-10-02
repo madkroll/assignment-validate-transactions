@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 public class Record {
 
     @XmlAttribute(name = "reference", required = true)
-    private final String reference;
+    private final long reference;
 
     @XmlElement(name = "accountNumber", required = true)
     private final String accountNumber;

@@ -14,8 +14,8 @@ public class HasSameReferenceAsPreviousTest {
         assertThat(
                 new HasSameReferenceAsPrevious()
                         .test(
-                                newRecord("one-reference"),
-                                newRecord("another-reference")
+                                newRecord(1),
+                                newRecord(2)
                         )
         ).isFalse();
     }
@@ -25,25 +25,13 @@ public class HasSameReferenceAsPreviousTest {
         assertThat(
                 new HasSameReferenceAsPrevious()
                         .test(
-                                newRecord("duplicate-reference"),
-                                newRecord("duplicate-reference")
+                                newRecord(10),
+                                newRecord(10)
                         )
         ).isTrue();
     }
 
-    @Test
-    public void shouldReturnTrueIfBothRecordsHaveEqualReferencesIgnoringCase() {
-        // So it defines that references which differ only by case - as equal references
-        assertThat(
-                new HasSameReferenceAsPrevious()
-                        .test(
-                                newRecord("DUPLICATE-REFERENCE"),
-                                newRecord("duplicate-reference")
-                        )
-        ).isTrue();
-    }
-
-    private static Record newRecord(final String recordReference) {
+    private static Record newRecord(final long recordReference) {
         return new Record(recordReference, "", "", BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
     }
 }

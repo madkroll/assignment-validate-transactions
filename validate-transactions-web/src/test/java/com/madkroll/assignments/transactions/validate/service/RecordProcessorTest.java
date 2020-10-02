@@ -79,10 +79,10 @@ public class RecordProcessorTest {
     }
 
     private static Record newRecord(final String description) {
-        return new Record("", "", description, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
+        return new Record(0, "", description, BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
     }
 
     private static InvalidRecord newInvalidRecord(final String description) {
-        return new InvalidRecord("", description);
+        return new InvalidRecord(0, description);
     }
 }

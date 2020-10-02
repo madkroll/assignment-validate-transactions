@@ -42,7 +42,7 @@ public class HasIncorrectEndBalanceTest {
     }
 
     private static Record newRecord(final String startBalance, final String mutation, final String endBalance) {
-        return new Record("", "", "", new BigDecimal(startBalance), new BigDecimal(mutation), new BigDecimal(endBalance));
+        return new Record(0, "", "", new BigDecimal(startBalance), new BigDecimal(mutation), new BigDecimal(endBalance));
     }
 
 }

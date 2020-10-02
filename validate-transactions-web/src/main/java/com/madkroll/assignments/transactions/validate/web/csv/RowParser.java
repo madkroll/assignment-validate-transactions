@@ -20,7 +20,7 @@ public class RowParser {
             final String[] csvFields = csvParserBuilder.build().parseLine(recordRow);
 
             return new Record(
-                    required(csvFields[csvSchema.get(Fields.REFERENCE)]),
+                    Long.parseLong(required(csvFields[csvSchema.get(Fields.REFERENCE)])),
                     required(csvFields[csvSchema.get(Fields.ACCOUNT_NUMBER)]),
                     required(csvFields[csvSchema.get(Fields.DESCRIPTION)]),
                     new BigDecimal(required(csvFields[csvSchema.get(Fields.START_BALANCE)])),

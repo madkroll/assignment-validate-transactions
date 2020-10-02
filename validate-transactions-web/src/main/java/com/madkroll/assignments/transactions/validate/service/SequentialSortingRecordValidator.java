@@ -18,7 +18,7 @@ import java.util.function.Predicate;
 @AllArgsConstructor
 public class SequentialSortingRecordValidator {
 
-    private final ListMultimap<String, InvalidRecord> invalidRecords = ArrayListMultimap.create();
+    private final ListMultimap<Long, InvalidRecord> invalidRecords = ArrayListMultimap.create();
 
     private final SortRecords sortRecords;
     private final BiPredicate<Record, Record> hasSameReferenceAsPrevious;

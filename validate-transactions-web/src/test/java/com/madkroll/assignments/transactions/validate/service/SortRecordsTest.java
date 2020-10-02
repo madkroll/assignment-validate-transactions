@@ -11,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SortRecordsTest {
 
-    private static final Record RECORD_FIRST = newRecord("A");
-    private static final Record RECORD_MIDDLE = newRecord("M");
-    private static final Record RECORD_LAST = newRecord("Z");
+    private static final Record RECORD_FIRST = newRecord(1);
+    private static final Record RECORD_MIDDLE = newRecord(500);
+    private static final Record RECORD_LAST = newRecord(1500);
 
     @Test
     public void shouldSortRecordsByReference() {
@@ -31,7 +31,7 @@ public class SortRecordsTest {
         assertThat(recordIterator.next()).isEqualTo(RECORD_LAST);
     }
 
-    public static Record newRecord(final String reference) {
+    public static Record newRecord(final long reference) {
         return new Record(reference, "", "", BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO);
     }
 }
