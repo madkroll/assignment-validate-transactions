@@ -9,6 +9,6 @@ import lombok.ToString;
 @AllArgsConstructor
 public class InvalidRecord {
 
-    private final long transactionReference;
+    private final long reference;
     private final String description;
 }
